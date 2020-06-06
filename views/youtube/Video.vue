@@ -1,16 +1,16 @@
 <template>
   <div class="app">
-    <SearchYouTubeVideo />
+    <SearchVideo />
   </div>
 </template>
 
 <script>
-import SearchYouTubeVideo from "@/components/SearchYouTubeVideo.vue";
+import SearchVideo from "@/components/SearchYouTubeVideo.vue";
 
 export default {
   name: "app",
   components: {
-    SearchYouTubeVideo
+    SearchVideo
   }
 };
 </script>

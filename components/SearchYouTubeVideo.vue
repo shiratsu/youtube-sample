@@ -40,7 +40,7 @@
 import axios from "axios";
 
 export default {
-  name: "SearchVideo",
+  name: "SearchYouTubeVideo",
   data: function() {
     return {
       results: null,
