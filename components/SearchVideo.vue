@@ -36,44 +36,44 @@
       placeholder="検索キーワードを入力"
     />
     <button @click="search_video">検索</button>
-    <table cellspacing="0" cellpadding="5" v-show="results">
-      <tr>
-        <th width="50">
-          <font>No</font>
-        </th>
-        <th width="200">
-          <font>Video</font>
-        </th>
-        <th width="700">
-          <font>Contents</font>
-        </th>
-      </tr>
-
-      <tr v-for="(movie, index) in results" v-bind:key="movie.id.videoId">
-        <!-- No -->
-        <td valign="top" width="50">{{ index + 1 }}</td>
-        <!-- Video -->
-        <td valign="top" width="300">
-          <a
-            v-bind:href="'https://www.youtube.com/watch?v=' + movie.id.videoId"
-          >
-            <img
-              width="300"
-              height="200"
-              v-bind:src="movie.snippet.thumbnails.medium.url"
-            />
-          </a>
-        </td>
-        <!-- titleとdescription -->
-        <td align="left" valign="top" width="700">
-          <font size="5" color="#c71585"
-            ><b>{{ movie.snippet.title }}</b></font
-          >
-          <br />
-          {{ movie.snippet.description }}
-        </td>
-      </tr>
-    </table>
+    <v-simple-table>
+      <template v-slot:default>
+        <thead>
+          <tr>
+            <th width="50">
+              <font>No</font>
+            </th>
+            <th width="200">
+              <font>Video</font>
+            </th>
+            <th width="700">
+              <font>Contents</font>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(movie, index) in results" :key="movie.title">
+            <td valign="top" width="50">{{ index + 1 }}</td>
+            <td>
+              <a :href="'https://www.youtube.com/watch?v=' + movie.id.videoId">
+                <img
+                  width="300"
+                  height="200"
+                  :src="movie.snippet.thumbnails.medium.url"
+                />
+              </a>
+            </td>
+            <td align="left" valign="top" width="700">
+              <font size="5" color="#c71585">
+                <b>{{ movie.snippet.title }}</b></font
+              >
+              <br />
+              {{ movie.snippet.description }}
+            </td>
+          </tr>
+        </tbody>
+      </template>
+    </v-simple-table>
   </div>
 </template>
 
@@ -82,7 +82,7 @@ import axios from "axios";
 
 export default {
   name: "SearchVideo",
-  data: function() {
+  data: function () {
     return {
       results: null,
       type: "",
@@ -97,15 +97,16 @@ export default {
         order: "",
         videoDuration: "",
         maxResults: "20", // 最大検索数
-        key: "AIzaSyB52s6AmGryeSRyyi-Ai-VJxDCu6PyGHPM"
-      }
+        // key: "AIzaSyB52s6AmGryeSRyyi-Ai-VJxDCu6PyGHPM",
+        key: "AIzaSyCk3u1OPYqyg8BWGRUgL2is_2UbZB8zc78",
+      },
     };
   },
   props: {
-    msg: String
+    msg: String,
   },
   methods: {
-    search_video: function() {
+    search_video: function () {
       this.params.regionCode = this.regionCode;
       this.params.q = this.keyword;
       this.params.type = this.type;
@@ -119,13 +120,13 @@ export default {
       var self = this;
       axios
         .get("https://www.googleapis.com/youtube/v3/search", {
-          params: this.params
+          params: this.params,
         })
-        .then(function(res) {
+        .then(function (res) {
           self.results = res.data.items;
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
