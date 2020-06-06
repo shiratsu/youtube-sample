@@ -20,6 +20,7 @@
           GitHub
         </a>
         <nuxt-link to="/about">about</nuxt-link>
+        <nuxt-link to="/youtube/video">YouTubeのSearchVideo</nuxt-link>
       </div>
     </div>
   </div>
