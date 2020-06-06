@@ -1,3 +1,12 @@
+const routerBase =
+  process.env.DEPLOY_ENV === "GH_PAGES"
+    ? {
+        router: {
+          base: "/youtube-sample/"
+        }
+      }
+    : {};
+
 export default {
   mode: "universal",
   /*
