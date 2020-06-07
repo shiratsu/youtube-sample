@@ -98,7 +98,7 @@ export default {
         videoDuration: "",
         maxResults: "20", // 最大検索数
         // key: "AIzaSyB52s6AmGryeSRyyi-Ai-VJxDCu6PyGHPM",
-        key: "AIzaSyCk3u1OPYqyg8BWGRUgL2is_2UbZB8zc78",
+        key: "AIzaSyBA_w4pykTJiOIC4pgxbRu155dX2ZXfKNs",
       },
     };
   },
